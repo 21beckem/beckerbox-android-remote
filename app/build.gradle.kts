@@ -5,11 +5,13 @@ plugins {
 
 android {
     namespace   = "com.beckersuite.box"
+    //noinspection GradleDependency
     compileSdk  = 35
 
     defaultConfig {
         applicationId  = "com.beckersuite.box"
-        minSdk         = 26
+        minSdk         = 31
+        //noinspection OldTargetApi
         targetSdk      = 35
         versionCode    = 1
         versionName    = "1.0"
@@ -31,6 +33,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation(libs.androidx.core.ktx.v1120)
+    implementation(libs.androidx.appcompat.v171)
 }

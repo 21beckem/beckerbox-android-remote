@@ -1,10 +1,9 @@
 package com.beckersuite.box
 
 import android.Manifest
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.net.http.SslError
-import android.os.Build
 import android.os.Bundle
 import android.webkit.SslErrorHandler
 import android.webkit.WebResourceRequest
@@ -13,7 +12,6 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import org.json.JSONObject
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SET THIS to your web app URL (the one your local server proxies)
@@ -28,10 +26,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     private lateinit var bleBridge: BleBridge
     private var pendingDeepLinkUrl: String? = null
-    private var webAppLoaded = false
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
-        WebView.setWebContentsDebuggingEnabled(true);
+        WebView.setWebContentsDebuggingEnabled(true)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         pendingDeepLinkUrl = intent?.dataString
@@ -55,12 +53,13 @@ class MainActivity : AppCompatActivity() {
 
         webView.webViewClient = object : WebViewClient() {
 
+            @SuppressLint("WebViewClientOnReceivedSslError")
             override fun onReceivedSslError(
                 view: WebView,
                 handler: SslErrorHandler,
                 error: SslError
             ) {
-                handler?.proceed()
+                handler.proceed()
             }
             // Keep all navigation inside the WebView
             override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest) = false
