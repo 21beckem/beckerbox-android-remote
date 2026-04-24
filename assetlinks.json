@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.blecontroller",
+      "sha256_cert_fingerprints": [
+        "7A:5C:4B:4A:89:A2:AF:8B:7C:93:D7:EF:C0:21:7E:8F:CA:63:46:0A:C0:3A:60:12:52:C4:04:E5:55:3F:A0:DD"
+      ]
+    }
+  }
+]

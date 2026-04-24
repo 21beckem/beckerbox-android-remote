@@ -8,6 +8,7 @@ import android.bluetooth.le.ScanResult
 import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.os.ParcelUuid
+import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import java.util.UUID
@@ -154,6 +155,7 @@ class BleBridge(
      * argsJs is already-formatted JS (e.g. "'some string'" or "42")
      */
     private fun jsCallback(fn: String, argsJs: String) {
+        Log.d("BleBridge", "Calling JS callback $fn with args: ($argsJs)")
         webView.post {
             webView.evaluateJavascript("if(typeof $fn==='function')$fn($argsJs);", null)
         }
