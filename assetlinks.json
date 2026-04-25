@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.beckersuite.box",
       "sha256_cert_fingerprints": [
-        "7A:5C:4B:4A:89:A2:AF:8B:7C:93:D7:EF:C0:21:7E:8F:CA:63:46:0A:C0:3A:60:12:52:C4:04:E5:55:3F:A0:DD"
+        "7A:5C:4B:4A:89:A2:AF:8B:7C:93:D7:EF:C0:21:7E:8F:CA:63:46:0A:C0:3A:60:12:52:C4:04:E5:55:3F:A0:DD",
+        "C4:B4:A9:D4:50:4E:52:96:0B:E0:7B:78:D0:0B:32:41:DE:10:67:80:3B:1A:EF:02:04:A0:21:D2:1C:0C:1B:56"
       ]
     }
   }
