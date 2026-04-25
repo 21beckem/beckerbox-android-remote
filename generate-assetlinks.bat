@@ -14,7 +14,7 @@ setlocal enabledelayedexpansion
 ::  credentials. The debug keystore is found automatically.
 :: ============================================================
 
-set PACKAGE_NAME=com.blecontroller
+set PACKAGE_NAME=com.beckersuite.box
 set OUTPUT_FILE=assetlinks.json
 
 :: ── Find keytool inside Android Studio's bundled JDK ────────────────────────
@@ -152,4 +152,5 @@ echo Verify with:
 echo   https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://r.box.beckersuite.com^&relation=delegate_permission/common.handle_all_urls
 echo.
 
+pause
 endlocal
