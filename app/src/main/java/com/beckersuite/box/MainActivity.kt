@@ -19,7 +19,10 @@ import androidx.core.content.ContextCompat
 // ─────────────────────────────────────────────────────────────────────────────
 // SET THIS to your web app URL (the one your local server proxies)
 // ─────────────────────────────────────────────────────────────────────────────
-private const val WEB_APP_URL = "https://box.beckersuite.com/app-landing.html"
+private const val WEB_APP_URL_PROD = "https://box.beckersuite.com/app-landing.html"
+private const val WEB_APP_URL_DEV = "https://r.box.beckersuite.com/o/?192.168.0.151/?p=/v2.2/"
+private val WEB_APP_URL: String
+    get() = if (BuildConfig.DEBUG) WEB_APP_URL_DEV else WEB_APP_URL_PROD
 // ─────────────────────────────────────────────────────────────────────────────
 
 private const val PERMISSIONS_REQUEST = 1
@@ -53,15 +56,18 @@ class MainActivity : AppCompatActivity() {
         bleBridge = BleBridge(this, webView)
         webView.addJavascriptInterface(bleBridge, "AndroidBle")
         webView.addJavascriptInterface(VibrateBridge(this), "AndroidVibrate")
-        webView.post {
-            webView.evaluateJavascript("window.inAndroidApp = true;", null)
-        }
 
         webView.webViewClient = object : WebViewClient() {
 
             override fun onPageStarted(view: WebView, url: String, favicon: android.graphics.Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 setLoadingVisible(true)
+
+                view.evaluateJavascript("""
+                    (function() {
+                        window.inAndroidApp = true;
+                    })();
+                """.trimIndent(), null)
             }
 
             @SuppressLint("WebViewClientOnReceivedSslError")
